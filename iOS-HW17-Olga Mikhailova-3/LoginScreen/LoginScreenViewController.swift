@@ -156,7 +156,7 @@ class LoginScreenViewController: UIViewController {
     // Connect Label
     connectLabel
       .centerXToSuperview()
-      .bottomToTop(of: dividerLeftView, offset: 7)
+      .centerY(to: dividerLeftView)
     
     // Social Buttons
     facebookButton
@@ -298,16 +298,16 @@ class LoginScreenViewController: UIViewController {
     }
     
     if let image = image {
-//      config.image = image.resized(to: CGSize(width: 24, height: 24))
-//      config.imagePadding = 8
-//      config.imagePlacement = .leading
+      //      config.image = image.resized(to: CGSize(width: 24, height: 24))
+      //      config.imagePadding = 8
+      //      config.imagePlacement = .leading
       let targetSize = CGSize(width: 24, height: 24)
-          let resizedImage = UIGraphicsImageRenderer(size: targetSize).image { _ in
-              image.draw(in: CGRect(origin: .zero, size: targetSize))
-          }
-          config.image = resizedImage
-          config.imagePadding = 8
-          config.imagePlacement = .leading
+      let resizedImage = UIGraphicsImageRenderer(size: targetSize).image { _ in
+        image.draw(in: CGRect(origin: .zero, size: targetSize))
+      }
+      config.image = resizedImage
+      config.imagePadding = 8
+      config.imagePlacement = .leading
     }
     
     config.contentInsets = NSDirectionalEdgeInsets(
@@ -360,7 +360,11 @@ class LoginScreenViewController: UIViewController {
   }
   
   private func showAlert(title: String, message: String) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    let alert = UIAlertController(
+      title: title,
+      message: message,
+      preferredStyle: .alert
+    )
     alert.addAction(UIAlertAction(title: "OK", style: .default))
     present(alert, animated: true)
   }
