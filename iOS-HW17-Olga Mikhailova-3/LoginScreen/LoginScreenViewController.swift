@@ -82,14 +82,14 @@ class LoginScreenViewController: UIViewController {
     color: .systemIndigo
   )
   
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     backgroundView.translatesAutoresizingMaskIntoConstraints = false
     setupHierarchy()
     setupLayout()
   }
-
+  
   // MARK: - Setup Hierarchy
   
   private func setupHierarchy() {
@@ -111,74 +111,74 @@ class LoginScreenViewController: UIViewController {
   // MARK: - Setup Layout
   
   private func setupLayout() {
-      // Background
-      backgroundView.pinToSuperview()
-      
-      // Title Label
-      titleLabel
-          .centerXToSuperview()
-          .topToSuperview(offset: 40, safeArea: true)
-      
-      // Text Fields
-      loginTextField
-          .horizontalToSuperview(inset: 40)
-          .topToBottom(of: titleLabel, offset: 40)
-          .height(45)
-      
-      passwordTextField
-          .horizontalToSuperview(inset: 40)
-          .topToBottom(of: loginTextField, offset: 20)
-          .height(45)
-      
-      // Buttons
-      loginButton
-          .horizontalToSuperview(inset: 40)
-          .topToBottom(of: passwordTextField, offset: 40)
-          .height(45)
-      
-      forgotButton
-          .centerXToSuperview()
-          .topToBottom(of: loginButton, offset: 16)
-      
-      // Dividers
-      dividerLeftView
-          .leadingToSuperview(offset: 20)
-          .trailingToSuperview(offset: 260)
-          .topToBottom(of: forgotButton, offset: 220)
-          .height(1)
-      
-      dividerRightView
-          .leadingToSuperview(offset: 260)
-          .trailingToSuperview(offset: 20)
-          .topToBottom(of: forgotButton, offset: 220)
-          .height(1)
-      
-      // Connect Label
-      connectLabel
-          .centerXToSuperview()
-          .bottomToTop(of: dividerLeftView, offset: 7)
-      
-      // Social Buttons
-      facebookButton
-          .leadingToSuperview(offset: 25)
-          .width(150)
-          .topToBottom(of: connectLabel, offset: 16)
-          .height(35)
-      
-      twitterButton
-          .trailingToSuperview(offset: 25)
-          .width(150)
-          .topToBottom(of: connectLabel, offset: 16)
-          .height(35)
-      
-      // Sign Up
-      signUpLabel
-          .leadingToSuperview(offset: 110)
-          .topToBottom(of: facebookButton, offset: 30)
-      
-      signUpButton
-          .leadingToTrailing(of: signUpLabel, offset: 6)
-          .centerY(to: signUpLabel)
+    // Background
+    backgroundView.pinToSuperview()
+    
+    // Title Label
+    titleLabel
+      .centerXToSuperview()
+      .topToSuperview(offset: 40, safeArea: true)
+    
+    // Text Fields
+    loginTextField
+      .horizontalToSuperview(inset: 40)
+      .topToBottom(of: titleLabel, offset: 40)
+      .height(45)
+    
+    passwordTextField
+      .horizontalToSuperview(inset: 40)
+      .topToBottom(of: loginTextField, offset: 20)
+      .height(45)
+    
+    // Buttons
+    loginButton
+      .horizontalToSuperview(inset: 40)
+      .topToBottom(of: passwordTextField, offset: 40)
+      .height(45)
+    
+    forgotButton
+      .centerXToSuperview()
+      .topToBottom(of: loginButton, offset: 16)
+    
+    // Dividers
+    dividerLeftView
+      .leadingToSuperview(offset: 20)
+      .trailingToSuperview(offset: 260)
+      .topToBottom(of: forgotButton, offset: 220)
+      .height(1)
+    
+    dividerRightView
+      .leadingToSuperview(offset: 260)
+      .trailingToSuperview(offset: 20)
+      .topToBottom(of: forgotButton, offset: 220)
+      .height(1)
+    
+    // Connect Label
+    connectLabel
+      .centerXToSuperview()
+      .bottomToTop(of: dividerLeftView, offset: 7)
+    
+    // Social Buttons
+    facebookButton
+      .leadingToSuperview(offset: 25)
+      .width(150)
+      .topToBottom(of: connectLabel, offset: 16)
+      .height(35)
+    
+    twitterButton
+      .trailingToSuperview(offset: 25)
+      .width(150)
+      .topToBottom(of: connectLabel, offset: 16)
+      .height(35)
+    
+    // Sign Up
+    signUpLabel
+      .leadingToSuperview(offset: 110)
+      .topToBottom(of: facebookButton, offset: 30)
+    
+    signUpButton
+      .leadingToTrailing(of: signUpLabel, offset: 6)
+      .centerY(to: signUpLabel)
   }
   
   //MARK: - Functions
@@ -215,6 +215,6 @@ class LoginScreenViewController: UIViewController {
     textField.translatesAutoresizingMaskIntoConstraints = false
     return textField
   }
-
+  
 }
 
