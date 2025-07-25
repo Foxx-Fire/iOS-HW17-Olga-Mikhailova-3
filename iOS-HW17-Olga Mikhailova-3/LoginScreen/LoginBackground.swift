@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class LoginBackground: UIView {
+final class LoginBackgroundView: UIView {
   
   private lazy var whiteBackgroundView: UIView = {
     let view = UIView()
