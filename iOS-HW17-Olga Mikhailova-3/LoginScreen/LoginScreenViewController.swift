@@ -216,5 +216,117 @@ class LoginScreenViewController: UIViewController {
     return textField
   }
   
+  private func createActionButton(
+    title: String,
+    backgroundColor: UIColor,
+    action: UIAction?
+  ) -> UIButton {
+    let button = UIButton(type: .system)
+    button.setTitle(title, for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = backgroundColor
+    button.layer.cornerRadius = 20
+    button.addShadow()
+    
+    if let action = action {
+      button.addAction(action, for: .touchUpInside)
+    }
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }
+  
+  
+  private func createTextButton(
+    title: String,
+    font: UIFont,
+    color: UIColor,
+    action: UIAction? = nil
+  ) -> UIButton {
+    let button = UIButton(type: .system)
+    button.setTitle(title, for: .normal)
+    button.titleLabel?.font = font
+    button.setTitleColor(color, for: .normal)
+    button.backgroundColor = .none
+    
+    if  let action = action {
+      button.addAction(action, for: .touchUpInside)
+    }
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }
+  
+  private func createDividerView() -> UIView {
+    let view = UIView()
+    view.backgroundColor = .lightGray
+    view.translatesAutoresizingMaskIntoConstraints = false
+    return view
+  }
+  
+  private func createDescriptionLabel(
+    text: String,
+    font: UIFont,
+    color: UIColor
+  ) -> UILabel {
+    let label = UILabel()
+    label.text = text
+    label.font = font
+    label.textColor = color
+    label.translatesAutoresizingMaskIntoConstraints = false
+    return label
+  }
+  
+  private func createSocialButton(
+    title: String,
+    image: UIImage?,
+    backgroundColor: UIColor,
+    action: UIAction?
+  ) -> UIButton {
+    let button = UIButton(type: .custom)
+    
+    var config = UIButton.Configuration.filled()
+    config.cornerStyle = .capsule
+    config.baseForegroundColor = .white
+    config.baseBackgroundColor = backgroundColor
+    config.title = title
+    config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+      var outgoing = incoming
+      outgoing.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
+      return outgoing
+    }
+    
+    if let image = image {
+//      config.image = image.resized(to: CGSize(width: 24, height: 24))
+//      config.imagePadding = 8
+//      config.imagePlacement = .leading
+      let targetSize = CGSize(width: 24, height: 24)
+          let resizedImage = UIGraphicsImageRenderer(size: targetSize).image { _ in
+              image.draw(in: CGRect(origin: .zero, size: targetSize))
+          }
+          config.image = resizedImage
+          config.imagePadding = 8
+          config.imagePlacement = .leading
+    }
+    
+    config.contentInsets = NSDirectionalEdgeInsets(
+      top: 5,
+      leading: 12,
+      bottom: 5,
+      trailing: 20
+    )
+    
+    button.configuration = config
+    button.addShadow()
+    
+    if let action = action {
+      button.addAction(action, for: .touchUpInside)
+    }
+    
+    button.translatesAutoresizingMaskIntoConstraints = false
+    return button
+  }
+  
 }
 
