@@ -328,5 +328,42 @@ class LoginScreenViewController: UIViewController {
     return button
   }
   
+  // MARK: - Actions
+  
+  @objc func loginButtonTapped() {
+    if loginButton.title(for: .normal) == "Login" {
+      loginButton.setTitle("Logging...", for: .normal)
+    } else {
+      loginButton.setTitle("Login", for: .normal)
+    }
+  }
+  
+  @objc private func fbButtonTapped() {
+    openURL("https://www.facebook.com")
+  }
+  
+  @objc private func twitterButtonTapped() {
+    openURL("https://www.twitter.com")
+  }
+  
+  private func openURL(_ urlString: String) {
+    guard let url = URL(string: urlString) else {
+      showAlert(title: "Ошибка", message: "Некорректный URL")
+      return
+    }
+    
+    UIApplication.shared.open(url, options: [:]) { success in
+      if !success {
+        self.showAlert(title: "Ошибка", message: "Не удалось открыть страницу")
+      }
+    }
+  }
+  
+  private func showAlert(title: String, message: String) {
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: "OK", style: .default))
+    present(alert, animated: true)
+  }
+  
 }
 
